@@ -1,0 +1,183 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<title>2027-1 신입생 모집</title>
+<style>
+  :root{
+    --navy:#0B1F4B; --navy2:#12306F; --blue:#1F5BD6; --sky:#4FA3FF; --cyan:#35D3FF;
+    --ink:#132238; --mute:#5B6B82; --line:#D7E2F3; --bg:#F3F7FC; --red:#E0263C;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  html,body{width:1080px;height:1920px;overflow:hidden;background:#fff}
+  body{font-family:"Noto Sans CJK KR","Noto Sans KR","Apple SD Gothic Neo",sans-serif;color:var(--ink);position:relative}
+
+  /* ---------- HERO ---------- */
+  .hero{position:relative;height:600px;background:linear-gradient(160deg,#071640 0%,#0B2460 45%,#123B8E 100%);color:#fff;overflow:hidden}
+  .hero svg.bg{position:absolute;inset:0;width:100%;height:100%}
+  .brand{position:absolute;top:44px;left:60px;right:60px;display:flex;justify-content:space-between;align-items:center;font-size:26px;font-weight:700;letter-spacing:.5px}
+  .brand .chip{display:flex;align-items:center;gap:14px;background:rgba(255,255,255,.10);border:1px solid rgba(255,255,255,.22);padding:12px 22px;border-radius:999px}
+  .brand .dot{width:14px;height:14px;border-radius:50%;background:var(--cyan);box-shadow:0 0 14px var(--cyan)}
+  .brand small{font-weight:500;opacity:.8;font-size:20px;margin-left:6px}
+  .sel{position:absolute;top:130px;left:60px;right:60px;text-align:center}
+  .sel .tag{display:inline-block;font-size:26px;font-weight:600;letter-spacing:1px;color:var(--cyan);border:2px solid rgba(53,211,255,.55);padding:10px 26px;border-radius:999px;margin-bottom:18px}
+  .sel h2{font-size:36px;font-weight:700;line-height:1.3;letter-spacing:-.5px}
+  .sel h2 b{color:#fff;font-weight:900}
+  .title{position:absolute;left:60px;right:60px;top:300px;text-align:center}
+  .title .year{font-size:50px;font-weight:700;color:var(--sky);letter-spacing:2px}
+  .title h1{font-size:104px;font-weight:900;line-height:1.05;letter-spacing:-3px;margin-top:4px;text-shadow:0 8px 30px rgba(0,0,0,.35)}
+  .title h1 span{background:linear-gradient(90deg,#9ED0FF,#35D3FF);-webkit-background-clip:text;background-clip:text;color:transparent}
+  .dept{position:absolute;left:60px;right:60px;bottom:36px;text-align:center;font-size:28px;font-weight:600;opacity:.92;letter-spacing:.5px}
+
+  /* ---------- BODY ---------- */
+  .body{position:relative;padding:36px 60px 0;background:var(--bg);height:1320px}
+  .body::before{content:"";position:absolute;left:0;right:0;top:0;height:220px;background:linear-gradient(180deg,#123B8E 0%,var(--bg) 100%);opacity:.18}
+  .card{position:relative;background:#fff;border:2px solid var(--line);border-radius:28px;padding:26px 32px;box-shadow:0 14px 40px rgba(11,31,75,.08)}
+  .card h3{display:flex;align-items:center;gap:16px;font-size:33px;font-weight:900;color:var(--navy);margin-bottom:14px;letter-spacing:-.5px}
+  .card h3::before{content:"";width:12px;height:36px;border-radius:6px;background:linear-gradient(180deg,var(--sky),var(--blue))}
+  .grid{display:grid;grid-template-columns:1fr 1fr;gap:22px;margin-bottom:22px}
+  p.lead{font-size:24px;line-height:1.45;color:var(--mute);margin-bottom:12px;word-break:keep-all}
+  ul{list-style:none}
+  li{font-size:25px;line-height:1.45;padding-left:28px;position:relative;margin-bottom:6px;word-break:keep-all}
+  li::before{content:"";position:absolute;left:4px;top:17px;width:11px;height:11px;border-radius:50%;background:var(--blue)}
+  li.hot{color:var(--red);font-weight:800}
+  li.hot::before{background:var(--red)}
+  li.key{color:var(--blue);font-weight:700}
+  li.key::before{background:var(--sky)}
+  .note{margin-top:10px;font-size:24px;color:var(--mute)}
+  .pill{display:inline-block;background:#EAF2FF;color:var(--blue);font-weight:800;border-radius:12px;padding:4px 14px}
+
+  /* scholarship table */
+  .sch{display:grid;grid-template-columns:330px 1fr;border:2px solid var(--line);border-radius:18px;overflow:hidden;margin:4px 0 16px}
+  .sch div{padding:12px 20px;font-size:24px;line-height:1.4}
+  .sch .th{background:var(--navy);color:#fff;font-weight:800;font-size:23px;padding:10px;text-align:center}
+  .sch .amt{border-right:2px solid var(--line)}
+  .sch .amt b{display:block;font-size:31px;color:var(--red);font-weight:900;line-height:1.3}
+  .sch .amt small{display:block;font-size:20px;color:var(--mute);margin-top:6px;line-height:1.4}
+  .perks{display:grid;grid-template-columns:1fr 1fr;gap:6px 24px}
+  .perks li{font-size:23px;margin-bottom:4px}
+
+  /* contact */
+  .contact{margin-top:22px;background:linear-gradient(135deg,var(--navy),var(--navy2));color:#fff;border-radius:28px;padding:24px 32px;display:flex;align-items:center;gap:40px}
+  .contact h4{font-size:34px;font-weight:900;white-space:nowrap;padding-right:40px;border-right:2px solid rgba(255,255,255,.25)}
+  .contact ul{display:grid;grid-template-columns:1fr;gap:4px}
+  .contact li{font-size:25px;padding-left:0;color:#fff}
+  .contact li::before{display:none}
+  .contact li b{color:var(--cyan);font-weight:700;margin-right:14px}
+</style>
+</head>
+<body>
+
+<section class="hero">
+  <svg class="bg" viewBox="0 0 1080 600" preserveAspectRatio="xMidYMid slice" xmlns="http://www.w3.org/2000/svg">
+    <defs>
+      <radialGradient id="g1" cx="85%" cy="90%" r="60%"><stop offset="0" stop-color="#35D3FF" stop-opacity=".35"/><stop offset="1" stop-color="#35D3FF" stop-opacity="0"/></radialGradient>
+      <radialGradient id="g2" cx="10%" cy="20%" r="45%"><stop offset="0" stop-color="#4FA3FF" stop-opacity=".25"/><stop offset="1" stop-color="#4FA3FF" stop-opacity="0"/></radialGradient>
+      <pattern id="grid" width="60" height="60" patternUnits="userSpaceOnUse"><path d="M60 0H0V60" fill="none" stroke="#fff" stroke-opacity=".06"/></pattern>
+    </defs>
+    <rect width="1080" height="600" fill="url(#grid)"/>
+    <rect width="1080" height="600" fill="url(#g1)"/>
+    <rect width="1080" height="600" fill="url(#g2)"/>
+    <!-- circuit traces -->
+    <g stroke="#35D3FF" stroke-opacity=".45" stroke-width="2" fill="none">
+      <path d="M0 500 H180 L230 450 H420"/><path d="M0 540 H120 L170 590"/>
+      <path d="M1080 230 H960 L920 270 H820"/><path d="M1080 80 H960"/>
+      <path d="M980 600 V460 L1030 410 V300"/>
+    </g>
+    <g fill="#35D3FF">
+      <circle cx="420" cy="450" r="6"/><circle cx="820" cy="270" r="6"/><circle cx="960" cy="80" r="6"/><circle cx="1030" cy="300" r="6"/>
+    </g>
+    <!-- abstract robot arm, bottom-right -->
+    <g transform="translate(870 430) scale(.62)" opacity=".75">
+      <rect x="150" y="230" width="200" height="34" rx="8" fill="#1F5BD6" stroke="#9ED0FF" stroke-width="2"/>
+      <rect x="215" y="150" width="70" height="90" rx="10" fill="#12306F" stroke="#9ED0FF" stroke-width="2"/>
+      <path d="M250 160 L120 40" stroke="#4FA3FF" stroke-width="30" stroke-linecap="round"/>
+      <path d="M120 40 L20 -30" stroke="#9ED0FF" stroke-width="22" stroke-linecap="round"/>
+      <circle cx="250" cy="160" r="26" fill="#071640" stroke="#35D3FF" stroke-width="4"/>
+      <circle cx="120" cy="40" r="22" fill="#071640" stroke="#35D3FF" stroke-width="4"/>
+      <circle cx="20" cy="-30" r="16" fill="#071640" stroke="#35D3FF" stroke-width="4"/>
+      <path d="M20 -30 L-20 -60 M20 -30 L-10 -5" stroke="#35D3FF" stroke-width="8" stroke-linecap="round"/>
+      <circle cx="-28" cy="-66" r="10" fill="#35D3FF"/><circle cx="-16" cy="2" r="10" fill="#35D3FF"/>
+    </g>
+  </svg>
+
+  <div class="brand">
+    <div class="chip"><span class="dot"></span>KNU 경북대학교</div>
+    <div class="chip"><span class="dot"></span>산업통상부</div>
+  </div>
+
+  <div class="sel">
+    <div class="tag">첨단산업특성화대학원(로봇 분야) 사업 선정</div>
+    <h2>경북대학교 <b>기계공학부</b></h2>
+  </div>
+
+  <div class="title">
+    <div class="year">2027학년도 1학기</div>
+    <h1><span>신입생</span> 모집</h1>
+  </div>
+
+  <div class="dept">일반대학원 <b>기계로봇공학과</b> · 석사 / 박사 / 석박사통합과정</div>
+</section>
+
+<section class="body">
+  <div class="grid">
+    <div class="card">
+      <h3>입시 주요사항</h3>
+      <p class="lead">기계공학부 일반대학원 기계공학과는 학과명 변경으로 인해 2027학년도 대학원 신입생 모집을 <b>2차모집(11.13~)</b>부터 진행합니다.</p>
+      <ul>
+        <li>변경 학과명: <span class="pill">기계로봇공학과</span></li>
+        <li>모집인원: 석사과정 OO명, 박사과정 OO명, 석박통합과정 OO명</li>
+      </ul>
+      <div class="note">※ 공학 및 자연 계열 우대</div>
+    </div>
+
+    <div class="card">
+      <h3>입시 일정 <small style="font-size:24px;color:var(--mute);font-weight:600">1학기 모집</small></h3>
+      <ul>
+        <li class="hot">2차 모집: 26.11.13.(금) ~ 11.20.(금)</li>
+        <li>추가 모집: 27.1월 중 (예정)</li>
+        <li class="key">9월 중 교수 및 학부사무실 상담을 권장</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="card">
+    <h3>장학제도 및 특전</h3>
+    <p class="lead" style="margin-bottom:10px">장학금 지급 및 다양한 추가활동 지원</p>
+    <div class="sch">
+      <div class="th">장학금 지급</div><div class="th">지원 사항</div>
+      <div class="amt">
+        <b>석사 月 190만 이상</b>
+        <b>박사 月 210만 이상</b>
+        <small>(전원, 단 지도교수의 추천을 받은 학생)</small>
+      </div>
+      <div>
+        <ul>
+          <li>국내외 연구 활동 지원</li>
+          <li class="key">연구실별 과제 인건비 추가 지급 가능</li>
+          <li>주요기업 산학장학생 기회 제공</li>
+        </ul>
+      </div>
+    </div>
+    <ul class="perks">
+      <li>기계공학·로봇공학 핵심기술 교육 및 연구활동 기회 제공</li>
+      <li>산업계 수요를 반영한 교과과정 운영</li>
+      <li>해외 학회 참여 기회 제공</li>
+      <li>산학프로젝트 기반 인재 육성(산학 컨소시엄)</li>
+      <li>취업 연계형 산학 장학생 지원</li>
+      <li>글로벌 로봇공동연구 연수 기회 제공</li>
+    </ul>
+  </div>
+
+  <div class="contact">
+    <h4>문의처</h4>
+    <ul>
+      <li><b>전화</b>053-950-7518</li>
+      <li><b>이메일</b>wgjun@knu.ac.kr</li>
+      <li><b>홈페이지</b>https://me.knu.ac.kr</li>
+    </ul>
+  </div>
+</section>
+
+</body>
+</html>
